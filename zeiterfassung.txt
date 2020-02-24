@@ -1,0 +1,3 @@
+Zeiterfassung SWE2
+
+24.02.  60   Intellij, JavaFX & Git Setup
