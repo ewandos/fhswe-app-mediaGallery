@@ -1,3 +1,7 @@
 Zeiterfassung SWE2
 
-24.02.  60   Intellij, JavaFX & Git Setup
+24.02.  90  Intellij, JavaFX & Git Setup
+26.02   30  Log4j Recherche und Installation
+27.02   30  JUnit Setup
+09.03   60  JavaFX Testing, Project Structure
+27.03   60  JavaFX Bindings Testing
