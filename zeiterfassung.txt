@@ -5,3 +5,4 @@ Zeiterfassung SWE2
 27.02   30  JUnit Setup
 09.03   60  JavaFX Testing, Project Structure
 27.03   60  JavaFX Bindings Testing
+30.03   270 Projektstruktur erfassen, Todos erstellen, Klassendiagramme etc.

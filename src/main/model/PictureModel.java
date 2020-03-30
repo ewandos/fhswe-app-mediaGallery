@@ -1,7 +1,7 @@
 package main.model;
 
 public class PictureModel {
-    private ArtistModel artist;
+    private PhotographerModel artist;
     private IPTCModel iptc;
     private EXIFModel exif;
 }

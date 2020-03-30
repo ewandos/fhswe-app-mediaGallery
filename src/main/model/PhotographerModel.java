@@ -2,7 +2,7 @@ package main.model;
 
 import java.util.Date;
 
-public class ArtistModel {
+public class PhotographerModel {
     private String firstName;
     private String lastName;
     private Date birthday;
