@@ -1,4 +1,4 @@
-package main.unitTests;
+package main.unittest;
 
 import main.model.PhotographerModel;
 import org.junit.jupiter.api.Test;

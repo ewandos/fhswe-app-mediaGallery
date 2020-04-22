@@ -1,11 +1,10 @@
-package main.unitTests;
+package main.unittest;
 
 import main.model.EXIFModel;
 import main.model.IPTCModel;
 import main.model.PhotographerModel;
 import main.model.PictureModel;
 import main.model.PictureModel.FileType;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

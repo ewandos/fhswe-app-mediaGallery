@@ -129,19 +129,13 @@ Alle `ViewModel` sind in einer umfassenden Klasse `MainViewModel` vereint, sodas
 * Picture: 
     * picture_id (Int)
     * filename (String)
-    * type (String)
-
-* EXIF: 
-    * exif_id (Int)
-    * camera (String)
-    * time (Date)
-    * iso (Integer)
-    * aperture (Float)
-    
-* IPTC: 
-    * id (Int)
-    * description (String)
-    * rating (Int)
+    * photographer_id (Int)
+    * exif_camera (String)
+    * exif_date (Date)
+    * exif_iso (Integer)
+    * exif_aperture (Float)
+    * iptc_description (String)
+    * iptc_rating (Int)
     
 * Photographer: 
     * id (Int)
@@ -154,9 +148,9 @@ Alle `ViewModel` sind in einer umfassenden Klasse `MainViewModel` vereint, sodas
     * id (Int)
     * description (String)
     
-* IPTC_Tags: 
-    * id_ipct (Int)
-    * id_tag (Int)
+* Picture_Tags: 
+    * picture_id (Int)
+    * tag_id (Int)
 
 ## Fragen und Antwort:
 * Was sind IPTC und EXIF?
