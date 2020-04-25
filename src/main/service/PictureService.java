@@ -2,26 +2,41 @@ package main.service;
 
 import main.model.PictureModel;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Logger;
+
 public class PictureService {
-    DBService dbservice;
+    private DBService dbservice;
+    private final Logger logger = Logger.getLogger("PictureService");
 
     public PictureModel[] getAllPictures() {
-        // send query to DBService
-        // get a huge ResultSet
-        // iterate through ResultSet rows
-        // create new PictureModels with PictureFactory(ResultSet)
-        // add Models to new Array
-        // return array
+        PreparedStatement ps = dbservice.preparedStatements.get("getAllPictures");
+        ResultSet rs = dbservice.executeQuery(ps);
+
+        // aus ResultSet PictureModels bauen
+
         return null;
     }
 
-    public PictureModel searchPicture() {
+    public PictureModel getPicture(String searchtext) {
+        PreparedStatement ps = dbservice.preparedStatements.get("searchPicture");
+        ps.setString(1, searchtext);
+        ResultSet rs = dbservice.executeQuery(ps);
+
         return null;
     }
 
-    public PictureModel getPictureById(int id) {
+    public PictureModel getPicture(int id) {
         return null;
     }
 
-    public void updatePicture() {}
+    public void updatePicture(int id, PictureModel picture) {
+
+    }
+
+    public void insertPicture(PictureModel picture) {
+
+    }
 }
