@@ -4,6 +4,9 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.logging.Logger;
 
+//TODO: Get rid of the preparedStatements Dictionary!
+//TODO: Hash filename and Photographer Names to check for collisions
+
 public class DBService {
     private static DBService instance = new DBService();
     private final Logger logger = Logger.getLogger("DBService");
