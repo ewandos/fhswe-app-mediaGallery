@@ -1,42 +1,40 @@
 package main.service;
 
 import main.model.PictureModel;
+import main.service.interfaces.IPictureService;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Logger;
+import java.util.List;
 
-public class PictureService {
+public class PictureService implements IPictureService {
     private DBService dbservice;
-    private final Logger logger = Logger.getLogger("PictureService");
 
-    public PictureModel[] getAllPictures() {
-        PreparedStatement ps = dbservice.preparedStatements.get("getAllPictures");
-        ResultSet rs = dbservice.executeQuery(ps);
+    @Override
+    public int getPictureCount() {
+        return 0;
+    }
 
-        // aus ResultSet PictureModels bauen
-
+    @Override
+    public List<PictureModel> getAllPictures() {
         return null;
     }
 
-    public PictureModel getPicture(String searchtext) {
-        PreparedStatement ps = dbservice.preparedStatements.get("searchPicture");
-        ps.setString(1, searchtext);
-        ResultSet rs = dbservice.executeQuery(ps);
-
+    @Override
+    public List<PictureModel> searchPictures(String keyword) {
         return null;
     }
 
-    public PictureModel getPicture(int id) {
+    @Override
+    public PictureModel getPicture(String filename) {
         return null;
     }
 
-    public void updatePicture(int id, PictureModel picture) {
+    @Override
+    public void addPicture(String filename) {
 
     }
 
-    public void insertPicture(PictureModel picture) {
+    @Override
+    public void updatePicture(PictureModel pic) {
 
     }
 }

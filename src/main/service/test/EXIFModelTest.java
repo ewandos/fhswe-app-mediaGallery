@@ -1,6 +1,6 @@
-package main.unittest;
+package main.service.test;
 
-import main.model.PhotographerModel;
+import main.model.EXIFModel;
 import org.junit.jupiter.api.Test;
 
 import java.text.SimpleDateFormat;
@@ -8,19 +8,18 @@ import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PhotographerModelTest {
-
+class EXIFModelTest {
     @Test
-    void canBirthdayByString() {
-        PhotographerModel photographer = new PhotographerModel();
-        String time = "15.02.1995";
+    void canSetDateByString() {
+        EXIFModel exif = new EXIFModel();
+        String time = "02.01.2020";
         Date date = null;
         try {
             date = new SimpleDateFormat("dd.MM.yyyy").parse(time);
-            photographer.setBirthday(time);
+            exif.setDate(time);
         } catch(Exception e) {
             fail();
         }
-        assertEquals(date, photographer.getBirthday());
+        assertEquals(date, exif.getDate());
     }
 }

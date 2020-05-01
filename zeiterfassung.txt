@@ -8,3 +8,8 @@ Zeiterfassung SWE2
 30.03   270 Projektstruktur erfassen, Todos erstellen, Klassendiagramme etc.
 01.04   80  Model-Klassen definiert
 03.04   60  Datenbank
+        80
+        60
+        70
+27.04   100 Mocking
+27.04   100 Mocking

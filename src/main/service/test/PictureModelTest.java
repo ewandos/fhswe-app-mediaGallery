@@ -1,4 +1,4 @@
-package main.unittest;
+package main.service.test;
 
 import main.model.EXIFModel;
 import main.model.IPTCModel;
