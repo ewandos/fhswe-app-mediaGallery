@@ -7,6 +7,7 @@ import main.model.PictureModel;
 import main.service.interfaces.IPictureService;
 
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,12 +42,8 @@ public class PictureServiceMock implements IPictureService {
         ip1.addTag("Nager");
         ip1.addTag("Klein");
 
-        try {
-            pg1.setBirthday("15.02.1995");
-            ex1.setDate("15.01.2020");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        pg1.setBirthday(LocalDate.of(1995, 2, 15));
+        ex1.setDate(LocalDate.of(2020, 1, 15));
 
         PictureModel pi1 = new PictureModel("maus.jpg");
         pi1.setPhotographer(pg1);
@@ -69,11 +66,7 @@ public class PictureServiceMock implements IPictureService {
         ip2.addTag("Groß");
         ip2.addTag("Doggo");
 
-        try {
-            ex2.setDate("02.01.2020");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        ex2.setDate(LocalDate.of(2020, 1, 2));
 
         PictureModel pi2 = new PictureModel("hund.jpg");
         pi2.setExif(ex2);
@@ -89,11 +82,7 @@ public class PictureServiceMock implements IPictureService {
         ex3.setIso(1200);
         ex3.setAperture(1.5f);
 
-        try {
-            ex3.setDate("12.01.2020");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        ex3.setDate(LocalDate.of(2020, 1, 12));
 
         PictureModel pi3 = new PictureModel("katze.jpg");
         pi3.setPhotographer(pg3);

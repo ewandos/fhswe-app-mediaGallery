@@ -19,8 +19,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import main.resources.Binding?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.view.MainWindowController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:id="root" fx:controller="main.view.MainWindowView">
    <children>
       <MenuBar>
         <menus>
@@ -49,11 +50,11 @@
       </HBox>
       <SplitPane dividerPositions="0.5083612040133779" prefHeight="160.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
         <items>
-            <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0">
+            <AnchorPane fx:id="imageViewContainer" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0">
                <children>
-                  <ImageView fitHeight="177.0" fitWidth="243.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="10.0">
+                  <ImageView fx:id="imageView" fitHeight="177.0" fitWidth="243.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="10.0">
                      <image>
-                        <Image url="@../../../katze.jpg" />
+                        <Image url="@../../../katze.jpg"/>
                      </image>
                   </ImageView>
                </children>
@@ -62,7 +63,7 @@
               <tabs>
                 <Tab text="EXIF">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="167.0" prefWidth="158.0">
+                    <AnchorPane fx:id="exifView" minHeight="0.0" minWidth="0.0" prefHeight="167.0" prefWidth="158.0">
                            <children>
                               <VBox layoutX="95.0" layoutY="8.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <padding>
@@ -70,13 +71,13 @@
                                  </padding>
                                  <children>
                                     <Label text="Camera" />
-                                    <TextField />
+                                    <TextField Binding.twoWay="{text=camera}"/>
                                     <Label layoutX="20.0" layoutY="20.0" text="Date" />
-                                    <DatePicker />
+                                    <DatePicker Binding.twoWay="{value=date}"/>
                                     <Label layoutX="20.0" layoutY="20.0" text="ISO" />
-                                    <TextField layoutX="20.0" layoutY="42.0" />
+                                    <TextField Binding.twoWay="{text=iso}" />
                                     <Label layoutX="20.0" layoutY="128.0" text="Aperture" />
-                                    <TextField layoutX="20.0" layoutY="150.0" />
+                                    <TextField Binding.twoWay="{text=aperture}" />
                                     <Button mnemonicParsing="false" text="Save Changes" textAlignment="RIGHT">
                                        <VBox.margin>
                                           <Insets top="10.0" />
@@ -90,7 +91,7 @@
                 </Tab>
                 <Tab text="IPTC">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <AnchorPane fx:id="iptcView" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <padding>
@@ -98,11 +99,11 @@
                                  </padding>
                                  <children>
                                     <Label text="Description" />
-                                    <TextArea prefHeight="80.0" prefWidth="200.0" />
+                                    <TextArea Binding.twoWay="{text=description}" />
                                     <Label text="Rating" />
-                                    <Slider blockIncrement="1.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+                                    <Slider Binding.twoWay="{value=rating}" blockIncrement="1.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
                                     <Label text="Tags" />
-                                    <TextField />
+                                    <TextField Binding.twoWay="{text=tags}"/>
                                     <Button mnemonicParsing="false" text="Save Changes" textAlignment="RIGHT">
                                        <VBox.margin>
                                           <Insets top="10.0" />
@@ -116,21 +117,21 @@
                 </Tab>
                   <Tab text="Photographer">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <AnchorPane fx:id="photographerView" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <padding>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </padding>
                                  <children>
-                                    <Label text="Forename" />
-                                    <TextField />
-                                    <Label layoutX="20.0" layoutY="20.0" text="Lastname" />
-                                    <TextField layoutX="20.0" layoutY="42.0" />
+                                    <Label text="First Name" />
+                                    <TextField Binding.twoWay="{text=firstName}" />
+                                    <Label layoutX="20.0" layoutY="20.0" text="Last Name" />
+                                    <TextField Binding.twoWay="{text=lastName}" />
                                     <Label layoutX="20.0" layoutY="20.0" text="Birthday" />
-                                    <DatePicker />
+                                    <DatePicker Binding.twoWay="{value=birthday}"/>
                                     <Label layoutX="20.0" layoutY="128.0" text="Notes" />
-                                    <TextArea prefHeight="200.0" prefWidth="200.0" />
+                                    <TextArea Binding.twoWay="{text=notes}" />
                                     <Button mnemonicParsing="false" text="Save Changes" textAlignment="RIGHT">
                                        <VBox.margin>
                                           <Insets top="10.0" />
@@ -150,43 +151,8 @@
         <content>
           <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0">
                <children>
-                  <HBox fillHeight="false" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <HBox fx:id="pictureScrollView" fillHeight="false" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <ImageView fitHeight="100.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../katze.jpg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="100.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../katze.jpg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="100.0" layoutX="168.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../katze.jpg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="100.0" layoutX="316.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../katze.jpg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="100.0" layoutX="464.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../katze.jpg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="100.0" layoutX="612.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../katze.jpg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="100.0" layoutX="760.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../katze.jpg" />
-                           </image>
-                        </ImageView>
                      </children>
                      <padding>
                         <Insets left="10.0" top="10.0" />

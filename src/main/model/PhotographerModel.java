@@ -1,13 +1,11 @@
 package main.model;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class PhotographerModel {
     private String firstName = null;
     private String lastName = null;
-    private Date birthday = null;
+    private LocalDate birthday = null;
     private String notes = null;
 
     public String getFirstName() {
@@ -26,16 +24,12 @@ public class PhotographerModel {
         this.lastName = lastName;
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
-    }
-
-    public void setBirthday(String birthdayString) throws ParseException {
-        this.birthday = new SimpleDateFormat("dd.MM.yyyy").parse(birthdayString);
     }
 
     public String getNotes() {

@@ -1,12 +1,9 @@
 package main.model;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class EXIFModel {
     private String camera = null;
-    private Date date = null;
+    private LocalDate date = null;
     private Integer iso = null;
     private Float aperture = null;
 
@@ -18,19 +15,15 @@ public class EXIFModel {
         this.camera = camera;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public void setDate(String dateString) throws ParseException {
-        this.date = new SimpleDateFormat("dd.MM.yyyy").parse(dateString);
-    }
-
-    public int getIso() {
+    public Integer getIso() {
         return iso;
     }
 
@@ -38,7 +31,7 @@ public class EXIFModel {
         this.iso = iso;
     }
 
-    public float getAperture() {
+    public Float getAperture() {
         return aperture;
     }
 
