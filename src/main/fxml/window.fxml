@@ -48,18 +48,15 @@
             <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" text="Find Pictures" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
-      <SplitPane dividerPositions="0.5083612040133779" prefHeight="160.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+      <SplitPane dividerPositions="0.70" prefHeight="160.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
         <items>
-            <AnchorPane fx:id="imageViewContainer" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0">
+            <AnchorPane fx:id="imageView" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0">
                <children>
-                  <ImageView fx:id="imageView" fitHeight="177.0" fitWidth="243.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="10.0">
-                     <image>
-                        <Image url="@../../../katze.jpg"/>
-                     </image>
+                  <ImageView fx:id="image" Binding.twoWay="{image=image}" fitHeight="177.0" fitWidth="243.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="10.0">
                   </ImageView>
                </children>
             </AnchorPane>
-            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane prefHeight="200.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="EXIF">
                   <content>
@@ -151,7 +148,7 @@
         <content>
           <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0">
                <children>
-                  <HBox fx:id="pictureScrollView" fillHeight="false" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <HBox fx:id="pictureListView" fillHeight="false" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                      </children>
                      <padding>
