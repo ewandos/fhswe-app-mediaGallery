@@ -1,7 +1,11 @@
 package main.viewmodel;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import main.model.PictureModel;
 import main.service.PictureServiceMock;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainWindowViewModel {
@@ -9,20 +13,25 @@ public class MainWindowViewModel {
     private PictureServiceMock pictureService = PictureServiceMock.getInstance();
 
     // Children
-    private PictureViewModel pictureViewModel;
-    private SearchViewModel searchViewModel;
     private PictureListViewModel pictureListViewModel;
+    private PictureViewModel selectedPicture;
 
     public MainWindowViewModel() {
-        List<PictureModel> pictureList = pictureService.getAllPictures();
+        List<PictureViewModel> pictureList = new ArrayList<>();
+        for (PictureModel pic : pictureService.getAllPictures())
+            pictureList.add(new PictureViewModel(pic, this));
 
         pictureListViewModel = new PictureListViewModel(pictureList);
+        PictureModel pic = pictureList.get(0).getPictureModel();
+        selectedPicture = new PictureViewModel(pic, this);
+    }
 
-        pictureViewModel = new PictureViewModel(pictureList.get(1));
+    public void setSelectedPicture(PictureModel pic) {
+        this.selectedPicture.refresh(pic);
     }
 
     public PictureViewModel getPictureViewModel() {
-        return pictureViewModel;
+        return selectedPicture;
     }
 
     public PictureListViewModel getPictureListViewModel() {
