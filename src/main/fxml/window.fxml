@@ -21,6 +21,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import main.resources.Binding?>
 
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:id="root" fx:controller="main.view.MainWindowView">
    <children>
       <MenuBar>
@@ -42,9 +45,9 @@
           </Menu>
         </menus>
       </MenuBar>
-      <HBox maxHeight="-Infinity" prefHeight="28.0" prefWidth="600.0">
+      <HBox fx:id="searchView" maxHeight="-Infinity" prefHeight="28.0" prefWidth="600.0">
          <children>
-            <TextField prefHeight="27.0" prefWidth="479.0" promptText="Search for keywords or values..." HBox.hgrow="ALWAYS" />
+            <TextField Binding.twoWay="{text=searchText}" prefHeight="27.0" prefWidth="479.0" promptText="Search for keywords or values..." HBox.hgrow="ALWAYS" />
             <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" text="Find Pictures" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>

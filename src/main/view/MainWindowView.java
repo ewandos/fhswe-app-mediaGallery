@@ -18,6 +18,7 @@ public class MainWindowView extends AbstractController {
     public HBox pictureListView;
     public AnchorPane imageView;
     public ImageView image;
+    public HBox searchView;
 
     // ViewModel
     private MainWindowViewModel mwvm = new MainWindowViewModel();
@@ -35,5 +36,6 @@ public class MainWindowView extends AbstractController {
         Binding.applyBinding(exifView, mwvm.getPictureViewModel().getExif());
         Binding.applyBinding(iptcView, mwvm.getPictureViewModel().getIptc());
         Binding.applyBinding(photographerView, mwvm.getPictureViewModel().getPhotographer());
+        Binding.applyBinding(searchView, mwvm.getSearchViewModel());
     }
 }

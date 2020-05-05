@@ -1,7 +1,5 @@
 package main.viewmodel;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import main.model.PictureModel;
 import main.service.PictureServiceMock;
 
@@ -14,6 +12,7 @@ public class MainWindowViewModel {
 
     // Children
     private PictureListViewModel pictureListViewModel;
+    private SearchViewModel searchViewModel;
     private PictureViewModel selectedPicture;
 
     public MainWindowViewModel() {
@@ -24,6 +23,7 @@ public class MainWindowViewModel {
         pictureListViewModel = new PictureListViewModel(pictureList);
         PictureModel pic = pictureList.get(0).getPictureModel();
         selectedPicture = new PictureViewModel(pic, this);
+        searchViewModel = new SearchViewModel();
     }
 
     public void setSelectedPicture(PictureModel pic) {
@@ -36,5 +36,9 @@ public class MainWindowViewModel {
 
     public PictureListViewModel getPictureListViewModel() {
         return pictureListViewModel;
+    }
+
+    public SearchViewModel getSearchViewModel() {
+        return searchViewModel;
     }
 }
