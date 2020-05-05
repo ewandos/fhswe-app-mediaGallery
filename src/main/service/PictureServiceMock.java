@@ -22,6 +22,7 @@ import java.util.List;
  */
 public class PictureServiceMock implements IPictureService {
     private List<PictureModel> pictureShop = new ArrayList<>();
+    private List<PhotographerModel> photographerShop = new ArrayList<>();
 
     private PictureServiceMock() {
         // PICTURE 1
@@ -51,6 +52,7 @@ public class PictureServiceMock implements IPictureService {
         pi1.setIptc(ip1);
 
         pictureShop.add(pi1);
+        photographerShop.add(pg1);
 
         // PICTURE 2
         EXIFModel ex2 = new EXIFModel();
@@ -92,9 +94,9 @@ public class PictureServiceMock implements IPictureService {
 
         // PICTURE 4
         PhotographerModel pg4 = new PhotographerModel();
-        pg1.setFirstName("Hans");
-        pg1.setLastName("Hirte");
-        pg1.setNotes("Der Dude kann den Auslöser drücken!");
+        pg4.setFirstName("Hans");
+        pg4.setLastName("Hirte");
+        pg4.setNotes("Der Dude kann den Auslöser drücken!");
 
         IPTCModel ip4 = new IPTCModel();
         ip4.setDescription("Ein großes Haus");
@@ -108,9 +110,15 @@ public class PictureServiceMock implements IPictureService {
         pi4.setIptc(ip4);
 
         pictureShop.add(pi4);
+        photographerShop.add(pg4);
 
         // PICTURE 5
         PictureModel pi5 = new PictureModel("haus2.jpg");
+        PhotographerModel pg5 = new PhotographerModel();
+        pg5.setFirstName("Christian");
+        pg5.setLastName("Steiffen");
+
+        photographerShop.add(pg5);
         pictureShop.add(pi5);
     }
 
@@ -157,5 +165,10 @@ public class PictureServiceMock implements IPictureService {
 
     @Override
     public void updatePicture(PictureModel pic) {
+    }
+
+    @Override
+    public List<PhotographerModel> getAllPhotographers() {
+        return photographerShop;
     }
 }

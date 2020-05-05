@@ -1,5 +1,6 @@
 package main.service;
 
+import main.model.PhotographerModel;
 import main.model.PictureModel;
 import main.service.interfaces.IPictureService;
 
@@ -36,5 +37,10 @@ public class PictureService implements IPictureService {
     @Override
     public void updatePicture(PictureModel pic) {
 
+    }
+
+    @Override
+    public List<PhotographerModel> getAllPhotographers() {
+        return null;
     }
 }

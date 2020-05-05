@@ -1,5 +1,6 @@
 package main.service.interfaces;
 
+import main.model.PhotographerModel;
 import main.model.PictureModel;
 
 import java.util.List;
@@ -53,4 +54,10 @@ public interface IPictureService {
      * @param pic Updated picture
      */
     void updatePicture(PictureModel pic);
+
+    /**
+     * Get all Photographers
+     * @return List of PhotographerModels
+     */
+    List<PhotographerModel> getAllPhotographers();
 }
