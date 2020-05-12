@@ -114,12 +114,35 @@ public class PictureServiceMock implements IPictureService {
 
         // PICTURE 5
         PictureModel pi5 = new PictureModel("haus2.jpg");
+
         PhotographerModel pg5 = new PhotographerModel();
         pg5.setFirstName("Christian");
         pg5.setLastName("Steiffen");
 
+        pi5.setPhotographer(pg5);
+
         photographerShop.add(pg5);
         pictureShop.add(pi5);
+
+        // PICTURE 6
+        PictureModel pi6 = new PictureModel("pinguin.jpg");
+        PhotographerModel pg6 = new PhotographerModel();
+        pg6.setFirstName("Ingrid");
+        pg6.setLastName("Impossible");
+        pg6.setNotes("Sie bekommt Bilder hin, die sonst niemand bekommt. Aber ihre Gage... puh, die ist happig.");
+
+        EXIFModel ex6 = new EXIFModel();
+        ex3.setCamera("Canon EOS 550D");
+
+        IPTCModel ip6 = new IPTCModel();
+        ip6.setDescription("Sie sind die Könige der Welt.");
+
+        pi6.setPhotographer(pg6);
+        pi6.setIptc(ip6);
+        pi6.setExif(ex6);
+
+        photographerShop.add(pg6);
+        pictureShop.add(pi6);
     }
 
     public static PictureServiceMock getInstance() {

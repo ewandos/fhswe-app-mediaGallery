@@ -14,153 +14,118 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import main.resources.Binding?>
 
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:id="root" fx:controller="main.view.MainWindowView">
-   <children>
-      <MenuBar>
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <HBox fx:id="searchView" maxHeight="-Infinity" prefHeight="28.0" prefWidth="600.0">
-         <children>
-            <TextField Binding.twoWay="{text=searchText}" prefHeight="27.0" prefWidth="479.0" promptText="Search for keywords or values..." HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" text="Find Pictures" HBox.hgrow="ALWAYS" />
-         </children>
-      </HBox>
-      <SplitPane dividerPositions="0.70" prefHeight="160.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-        <items>
-            <AnchorPane fx:id="imageView" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0">
-               <children>
-                  <ImageView fx:id="image" Binding.twoWay="{image=image}" fitHeight="177.0" fitWidth="243.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="10.0">
-                  </ImageView>
-               </children>
-            </AnchorPane>
-            <TabPane prefHeight="200.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
-              <tabs>
-                <Tab text="EXIF">
-                  <content>
-                    <AnchorPane fx:id="exifView" minHeight="0.0" minWidth="0.0" prefHeight="167.0" prefWidth="158.0">
-                           <children>
-                              <VBox layoutX="95.0" layoutY="8.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                                 <children>
-                                    <Label text="Camera" />
-                                    <TextField Binding.twoWay="{text=camera}"/>
-                                    <Label layoutX="20.0" layoutY="20.0" text="Date" />
-                                    <DatePicker Binding.twoWay="{value=date}"/>
-                                    <Label layoutX="20.0" layoutY="20.0" text="ISO" />
-                                    <TextField Binding.twoWay="{text=iso}" />
-                                    <Label layoutX="20.0" layoutY="128.0" text="Aperture" />
-                                    <TextField Binding.twoWay="{text=aperture}" />
-                                    <Button mnemonicParsing="false" text="Save Changes" textAlignment="RIGHT">
-                                       <VBox.margin>
-                                          <Insets top="10.0" />
-                                       </VBox.margin>
-                                    </Button>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
-                  </content>
-                </Tab>
-                <Tab text="IPTC">
-                  <content>
-                    <AnchorPane fx:id="iptcView" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                                 <children>
-                                    <Label text="Description" />
-                                    <TextArea Binding.twoWay="{text=description}" />
-                                    <Label text="Rating" />
-                                    <Slider Binding.twoWay="{value=rating}" blockIncrement="1.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
-                                    <Label text="Tags" />
-                                    <TextField Binding.twoWay="{text=tags}"/>
-                                    <Button mnemonicParsing="false" text="Save Changes" textAlignment="RIGHT">
-                                       <VBox.margin>
-                                          <Insets top="10.0" />
-                                       </VBox.margin>
-                                    </Button>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
-                  </content>
-                </Tab>
-                  <Tab text="Photographer">
-                     <content>
-                        <AnchorPane fx:id="photographerView" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                                 <children>
-                                    <Label text="First Name" />
-                                    <TextField Binding.twoWay="{text=firstName}" />
-                                    <Label layoutX="20.0" layoutY="20.0" text="Last Name" />
-                                    <TextField Binding.twoWay="{text=lastName}" />
-                                    <Label layoutX="20.0" layoutY="20.0" text="Birthday" />
-                                    <DatePicker Binding.twoWay="{value=birthday}"/>
-                                    <Label layoutX="20.0" layoutY="128.0" text="Notes" />
-                                    <TextArea Binding.twoWay="{text=notes}" />
-                                    <Button mnemonicParsing="false" text="Save Changes" textAlignment="RIGHT">
-                                       <VBox.margin>
-                                          <Insets top="10.0" />
-                                       </VBox.margin>
-                                    </Button>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </Tab>
-              </tabs>
-            </TabPane>
-        </items>
-      </SplitPane>
-      <ScrollPane fitToWidth="true" hbarPolicy="ALWAYS" maxHeight="140.0" pannable="true" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER">
-        <content>
-          <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0">
-               <children>
-                  <HBox fx:id="pictureListView" fillHeight="false" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                     </children>
-                     <padding>
-                        <Insets left="10.0" top="10.0" />
-                     </padding>
-                  </HBox>
-               </children>
-            </AnchorPane>
-        </content>
-      </ScrollPane>
-   </children>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0"
+      xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:id="root"
+      fx:controller="main.view.MainWindowView">
+    <MenuBar>
+        <Menu mnemonicParsing="false" text="File">
+            <MenuItem mnemonicParsing="false" text="Close"/>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+            <MenuItem mnemonicParsing="false" text="Delete"/>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+            <MenuItem mnemonicParsing="false" text="About"/>
+        </Menu>
+    </MenuBar>
+    <HBox fx:id="searchView" maxHeight="-Infinity" prefHeight="28.0" prefWidth="600.0">
+        <TextField Binding.twoWay="{text=searchText}" prefHeight="27.0" prefWidth="479.0"
+                   promptText="Search for keywords or values..." HBox.hgrow="ALWAYS"/>
+        <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" text="Find Pictures"
+                HBox.hgrow="ALWAYS"/>
+    </HBox>
+    <SplitPane dividerPositions="0.70" VBox.vgrow="ALWAYS">
+        <AnchorPane fx:id="imageView" minWidth="-Infinity" prefWidth="300.0">
+            <ImageView fx:id="image" Binding.twoWay="{image=image}" preserveRatio="true" >
+            </ImageView>
+        </AnchorPane>
+        <TabPane minWidth="-Infinity" prefWidth="200.0" tabClosingPolicy="unavailable">
+            <Tab text="EXIF">
+                <AnchorPane fx:id="exifView">
+                    <VBox spacing="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <padding>
+                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                        </padding>
+                        <Label text="Camera"/>
+                        <TextField Binding.twoWay="{text=camera}"/>
+                        <Label text="Date"/>
+                        <DatePicker Binding.twoWay="{value=date}"/>
+                        <Label text="ISO"/>
+                        <TextField Binding.twoWay="{text=iso}"/>
+                        <Label text="Aperture"/>
+                        <TextField Binding.twoWay="{text=aperture}"/>
+                        <Button text="Save Changes">
+                            <VBox.margin>
+                                <Insets top="10.0"/>
+                            </VBox.margin>
+                        </Button>
+                    </VBox>
+                </AnchorPane>
+            </Tab>
+            <Tab text="IPTC">
+                <AnchorPane fx:id="iptcView">
+                    <VBox spacing="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <padding>
+                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                        </padding>
+                        <Label text="Description"/>
+                        <TextArea Binding.twoWay="{text=description}"/>
+                        <Label text="Rating"/>
+                        <Slider Binding.twoWay="{value=rating}" blockIncrement="1.0"
+                                majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0"
+                                showTickLabels="true" showTickMarks="true" snapToTicks="true"/>
+                        <Label text="Tags"/>
+                        <TextField Binding.twoWay="{text=tags}"/>
+                        <Button mnemonicParsing="false" text="Save Changes" textAlignment="RIGHT">
+                            <VBox.margin>
+                                <Insets top="10.0"/>
+                            </VBox.margin>
+                        </Button>
+                    </VBox>
+                </AnchorPane>
+            </Tab>
+            <Tab text="Photographer">
+                <AnchorPane fx:id="photographerView" minHeight="0.0" minWidth="0.0" prefHeight="180.0"
+                            prefWidth="200.0">
+                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0"
+                          AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <padding>
+                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                        </padding>
+                        <Label text="First Name"/>
+                        <TextField Binding.twoWay="{text=firstName}"/>
+                        <Label layoutX="20.0" layoutY="20.0" text="Last Name"/>
+                        <TextField Binding.twoWay="{text=lastName}"/>
+                        <Label layoutX="20.0" layoutY="20.0" text="Birthday"/>
+                        <DatePicker Binding.twoWay="{value=birthday}"/>
+                        <Label layoutX="20.0" layoutY="128.0" text="Notes"/>
+                        <TextArea Binding.twoWay="{text=notes}"/>
+                        <Button mnemonicParsing="false" text="Save Changes" textAlignment="RIGHT">
+                            <VBox.margin>
+                                <Insets top="10.0"/>
+                            </VBox.margin>
+                        </Button>
+                    </VBox>
+                </AnchorPane>
+            </Tab>
+        </TabPane>
+    </SplitPane>
+    <ScrollPane fitToWidth="true" hbarPolicy="ALWAYS" maxHeight="140.0" pannable="true" prefHeight="200.0"
+                prefWidth="200.0" vbarPolicy="NEVER">
+        <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0">
+            <HBox fx:id="pictureListView" fillHeight="false" spacing="10.0" AnchorPane.bottomAnchor="0.0"
+                  AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <padding>
+                    <Insets left="10.0" top="10.0"/>
+                </padding>
+            </HBox>
+        </AnchorPane>
+    </ScrollPane>
 </VBox>
