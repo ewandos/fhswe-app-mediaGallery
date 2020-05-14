@@ -6,18 +6,12 @@ import java.util.logging.Logger;
 public class MainWindowViewModel {
     private PictureServiceMock ps = PictureServiceMock.getInstance();
     private final Logger logger = Logger.getLogger("MainWindowViewModel");
-
-    // Children View Models
-    private PictureListViewModel pictureListViewModel;
-    private SearchViewModel searchViewModel;
-    private PictureViewModel selectedPicture;
     private int selectedIndex = 0;
 
-    public MainWindowViewModel() {
-        selectedPicture = new PictureViewModel(ps.getPicture(selectedIndex));
-        pictureListViewModel = new PictureListViewModel(ps.getAllPictures());
-        searchViewModel = new SearchViewModel();
-    }
+    // Children View Models
+    private PictureListViewModel pictureListViewModel = new PictureListViewModel(ps.getAllPictures());
+    private SearchViewModel searchViewModel = new SearchViewModel();
+    private PictureViewModel selectedPicture = new PictureViewModel(ps.getPicture(selectedIndex));
 
     public PictureViewModel getPictureViewModel() {
         return selectedPicture;
@@ -41,7 +35,7 @@ public class MainWindowViewModel {
         }
     }
 
-    public void updateDatabase() {
+    public String updateDatabase() {
         PictureModel pic = selectedPicture.getUpdatedModel();
 
         // TODO: Business Layer validates Data
@@ -51,5 +45,10 @@ public class MainWindowViewModel {
             Der BL gibt zurück, ob es einen Fehler gab oder nicht
          */
 
+        return "Changes saved!";
+    }
+
+    public void loadAllPictures() {
+        selectPicture(0);
     }
 }

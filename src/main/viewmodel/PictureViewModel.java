@@ -47,6 +47,7 @@ public class PictureViewModel extends ViewModel {
         // TODO: Photographer doesn't update!
         exif.saveChanges(pictureModel.getExif());
         iptc.saveChanges(pictureModel.getIptc());
+        photographer.saveChanges(pictureModel.getPhotographer());
 
         logger.info("Updated Model " + this.pictureModel);
 

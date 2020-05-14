@@ -58,6 +58,11 @@ public class MainWindowView extends AbstractController {
     }
 
     public void saveChanges() {
-        mwvm.updateDatabase();
+        String response = mwvm.updateDatabase();
+        PopUpView.display(response);
+    }
+
+    public void reloadPictures() {
+        mwvm.loadAllPictures();
     }
 }

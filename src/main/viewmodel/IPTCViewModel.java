@@ -49,7 +49,7 @@ public class IPTCViewModel {
         iptc.setRating((int) rating.get());
         iptc.setDescription(description.get());
         String tagString = this.tags.get();
-        List<String> separatedTags = Arrays.asList(tagString.split(","));
+        List<String> separatedTags = Arrays.asList(tagString.split(", "));
         iptc.setTags(separatedTags);
     }
 }

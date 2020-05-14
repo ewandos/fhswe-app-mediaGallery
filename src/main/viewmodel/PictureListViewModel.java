@@ -2,7 +2,6 @@ package main.viewmodel;
 
 import javafx.scene.image.Image;
 import main.model.PictureModel;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

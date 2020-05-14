@@ -40,4 +40,11 @@ public class PhotographerViewModel {
     public StringProperty notesProperty() {
         return notes;
     }
+
+    public void saveChanges(PhotographerModel photographer) {
+        photographer.setFirstName(firstName.get());
+        photographer.setLastName(lastName.get());
+        photographer.setBirthday(birthday.get());
+        photographer.setNotes(notes.get());
+    }
 }

@@ -50,10 +50,14 @@ public class EXIFViewModel {
         exif.setCamera(camera.get());
         exif.setDate(date.get());
 
-        int newIso = Integer.parseInt(this.iso.get());
-        exif.setIso(newIso);
+        if (!this.iso.get().isBlank()) {
+            int newIso = Integer.parseInt(this.iso.get());
+            exif.setIso(newIso);
+        }
 
-        float newAperture = Float.parseFloat(this.aperture.get());
-        exif.setAperture(newAperture);
+        if (!this.aperture.get().isBlank()) {
+            float newAperture = Float.parseFloat(this.aperture.get());
+            exif.setAperture(newAperture);
+        }
     }
 }
