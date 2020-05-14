@@ -1,9 +1,0 @@
-
-E
-java:S1148 "#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8šÙ¼¥”.
-Z	java:S106"9Replace this use of System.out or System.err by a logger.(«¸ÛĞøÿÿÿÿ8‡ñ¥”.
-U	java:S106"9Replace this use of System.out or System.err by a logger.(¸÷—Ì8‡ñ¥”.
-F
-java:S2115")Add password protection to this database.(™“Š£8šÙ¼¥”.
-i
-java:S2095"GUse try-with-resources or close this "Statement" in a "finally" clause.(íñéşÿÿÿÿ8¾ÿñ¥”.

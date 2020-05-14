@@ -181,13 +181,19 @@ public class PictureServiceMock implements IPictureService {
     }
 
     @Override
+    public PictureModel getPicture(int index) {
+        return pictureShop.get(index);
+    }
+
+    @Override
     public void addPicture(String filename){
         PictureModel pic = new PictureModel(filename);
         pictureShop.add(pic);
     }
 
     @Override
-    public void updatePicture(PictureModel pic) {
+    public PictureModel updatePicture(PictureModel pic) {
+        return null;
     }
 
     @Override

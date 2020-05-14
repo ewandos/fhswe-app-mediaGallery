@@ -60,7 +60,7 @@
                         <TextField Binding.twoWay="{text=iso}"/>
                         <Label text="Aperture"/>
                         <TextField Binding.twoWay="{text=aperture}"/>
-                        <Button text="Save Changes">
+                        <Button text="Save Changes" onMouseClicked="#saveChanges">
                             <VBox.margin>
                                 <Insets top="10.0"/>
                             </VBox.margin>
@@ -82,7 +82,7 @@
                                 showTickLabels="true" showTickMarks="true" snapToTicks="true"/>
                         <Label text="Tags"/>
                         <TextField Binding.twoWay="{text=tags}"/>
-                        <Button mnemonicParsing="false" text="Save Changes" textAlignment="RIGHT">
+                        <Button text="Save Changes" onMouseClicked="#saveChanges">
                             <VBox.margin>
                                 <Insets top="10.0"/>
                             </VBox.margin>
@@ -107,7 +107,7 @@
                         <DatePicker Binding.twoWay="{value=birthday}"/>
                         <Label layoutX="20.0" layoutY="128.0" text="Notes"/>
                         <TextArea Binding.twoWay="{text=notes}"/>
-                        <Button mnemonicParsing="false" text="Save Changes" textAlignment="RIGHT">
+                        <Button text="Save Changes" onMouseClicked="#saveChanges">
                             <VBox.margin>
                                 <Insets top="10.0"/>
                             </VBox.margin>
@@ -117,14 +117,10 @@
             </Tab>
         </TabPane>
     </SplitPane>
-    <ScrollPane fitToWidth="true" hbarPolicy="ALWAYS" maxHeight="140.0" pannable="true" prefHeight="200.0"
-                prefWidth="200.0" vbarPolicy="NEVER">
-        <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0">
-            <HBox fx:id="pictureListView" fillHeight="false" spacing="10.0" AnchorPane.bottomAnchor="0.0"
-                  AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                <padding>
-                    <Insets left="10.0" top="10.0"/>
-                </padding>
+    <ScrollPane fitToWidth="true" hbarPolicy="ALWAYS"  pannable="true" vbarPolicy="NEVER">
+        <AnchorPane>
+            <HBox fx:id="pictureListView" fillHeight="false" spacing="10.0" onMouseClicked="#selectImage">
+
             </HBox>
         </AnchorPane>
     </ScrollPane>

@@ -3,6 +3,8 @@ package main.viewmodel;
 import javafx.beans.property.*;
 import main.model.IPTCModel;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.ListIterator;
 
 public class IPTCViewModel {
@@ -43,4 +45,11 @@ public class IPTCViewModel {
     }
 
 
+    public void saveChanges(IPTCModel iptc) {
+        iptc.setRating((int) rating.get());
+        iptc.setDescription(description.get());
+        String tagString = this.tags.get();
+        List<String> separatedTags = Arrays.asList(tagString.split(","));
+        iptc.setTags(separatedTags);
+    }
 }

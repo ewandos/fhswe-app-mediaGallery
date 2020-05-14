@@ -42,6 +42,8 @@ public interface IPictureService {
      */
     PictureModel getPicture(String filename);
 
+    PictureModel getPicture(int index);
+
     /**
      * Creates a new PictureModel and simulates the Photographer, IPTC & EXIF attributes.
      * Adds the new Object to the storage.
@@ -53,7 +55,7 @@ public interface IPictureService {
      * Search for the filename of the given PictureModel, compares the objects and updates attributes that differ
      * @param pic Updated picture
      */
-    void updatePicture(PictureModel pic);
+    PictureModel updatePicture(PictureModel pic);
 
     /**
      * Get all Photographers

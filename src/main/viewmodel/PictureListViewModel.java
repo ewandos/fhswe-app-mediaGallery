@@ -1,24 +1,30 @@
 package main.viewmodel;
 
-import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
+import main.model.PictureModel;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PictureListViewModel {
 
-    private List<ImageView> imageViewList = new ArrayList<>();
+    private List<Image> imageList = new ArrayList<>();
 
-    public PictureListViewModel(List<PictureViewModel> pictureList) {
-        refresh(pictureList);
-    }
-
-    public void refresh(List<PictureViewModel> pictureList) {
-        for (PictureViewModel pic : pictureList) {
-            imageViewList.add(pic.getThumbnail());
+    public PictureListViewModel(List<PictureModel> pictureList) {
+        for (PictureModel pic : pictureList) {
+            try {
+                String path = "./images/" + pic.getFilename();
+                Image image = new Image(new FileInputStream(path));
+                imageList.add(image);
+            } catch(FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    public List<ImageView> getImageViewList() {
-        return imageViewList;
+    public List<Image> getImages() {
+        return imageList;
     }
 }

@@ -45,4 +45,15 @@ public class EXIFViewModel {
     public StringProperty apertureProperty() {
         return aperture;
     }
+
+    public void saveChanges(EXIFModel exif) {
+        exif.setCamera(camera.get());
+        exif.setDate(date.get());
+
+        int newIso = Integer.parseInt(this.iso.get());
+        exif.setIso(newIso);
+
+        float newAperture = Float.parseFloat(this.aperture.get());
+        exif.setAperture(newAperture);
+    }
 }
