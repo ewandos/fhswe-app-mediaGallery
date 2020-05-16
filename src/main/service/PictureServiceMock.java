@@ -6,7 +6,6 @@ import main.model.PhotographerModel;
 import main.model.PictureModel;
 import main.service.interfaces.IPictureService;
 
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +22,7 @@ import java.util.List;
 public class PictureServiceMock implements IPictureService {
     private List<PictureModel> pictureShop = new ArrayList<>();
     private List<PhotographerModel> photographerShop = new ArrayList<>();
+    private static PictureServiceMock instance = new PictureServiceMock();
 
     private PictureServiceMock() {
         // PICTURE 1
@@ -146,7 +146,7 @@ public class PictureServiceMock implements IPictureService {
     }
 
     public static PictureServiceMock getInstance() {
-        return new PictureServiceMock();
+        return instance;
     }
 
     @Override
@@ -200,4 +200,16 @@ public class PictureServiceMock implements IPictureService {
     public List<PhotographerModel> getAllPhotographers() {
         return photographerShop;
     }
+
+    @Override
+    public PhotographerModel getPhotographer(int index) {
+        return photographerShop.get(index);
+    }
+
+    @Override
+    public PhotographerModel updatePhotographer(PhotographerModel photographerModel) {
+        return null;
+    }
+
+
 }

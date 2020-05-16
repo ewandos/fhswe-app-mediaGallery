@@ -1,68 +1,113 @@
 package main.view;
 
-import javafx.scene.image.Image;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+
 import main.resources.Binding;
 import main.viewmodel.MainWindowViewModel;
 
+import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
 
+// responsible for managing the communication of view models and the actual UI
+// this class does NOT contain any logic or data manipulation
+// e.g. the MainWindowView binds a textfield for the aperture value to a property in its corresponding view model
+// it does NOT decides what happens if there is no aperture value available
 public class MainWindowView extends AbstractController {
-    // FX:Container
+
+    // the Logger instance can be used to log text output in this class
+    // the given class name makes possible that the log does know in which
+    // class the entry was printed
+    private final Logger logger = Logger.getLogger("MainWindowView");
+
+    // javafx containers that contain several controls
+    // the controls will be bound to properties of corresponding view models
     public AnchorPane exifView;
     public AnchorPane iptcView;
     public AnchorPane photographerView;
     public HBox pictureListView;
-    public AnchorPane imageView;
-    public ImageView image;
     public HBox searchView;
 
-    // ViewModel
-    private MainWindowViewModel mwvm = new MainWindowViewModel();
+    // container that have no corresponding view model
+    public AnchorPane previewImageContainer;
+    public ImageView previewImage;
+
+    // used to access every view model
+    private MainWindowViewModel main = new MainWindowViewModel();
 
     @Override
     public void initialize(URL url, ResourceBundle resources) {
         super.initialize(url, resources);
 
-        // GUI Related Bindings
-        image.fitWidthProperty().bind(imageView.widthProperty());
-        image.fitHeightProperty().bind(imageView.heightProperty());
+        // bind width & height of the preview image to width & height of its container
+        // to make the preview image responsive to its container
+        previewImage.fitWidthProperty().bind(previewImageContainer.widthProperty());
+        previewImage.fitHeightProperty().bind(previewImageContainer.heightProperty());
 
-        List<ImageView> thumbnails = new ArrayList<>();
-        for (Image im : mwvm.getPictureListViewModel().getImages()) {
-            ImageView imView = new ImageView(im);
-            imView.setFitHeight(120);
-            imView.setPreserveRatio(true);
-            thumbnails.add(imView);
-        }
+        // add an observable list to the hBox, so if the content of the list changes
+        // the content in the GUI changes
+        pictureListView.getChildren().addAll(main.getPictureListViewModel().getThumbnails());
 
-        pictureListView.getChildren().addAll(thumbnails);
-
-        Binding.applyBinding(searchView, mwvm.getSearchViewModel());
-        Binding.applyBinding(imageView, mwvm.getPictureViewModel());
-        Binding.applyBinding(exifView, mwvm.getPictureViewModel().getExif());
-        Binding.applyBinding(iptcView, mwvm.getPictureViewModel().getIptc());
-        Binding.applyBinding(photographerView, mwvm.getPictureViewModel().getPhotographer());
+        // these bindings are NOT done with native javafx functions
+        // instead two helper classes main.resources.Binding & main.resources.ReflectionHelper are used
+        // to get an idea of how they are work together with the controller and the fxml
+        // visit: https://git-inf.technikum-wien.at/BIF-SWE2/JavaFX-Bindings
+        // it is a simple example containing only one view and one view model
+        Binding.applyBinding(searchView, main.getSearchViewModel());
+        Binding.applyBinding(previewImage, main.getPictureViewModel());
+        Binding.applyBinding(exifView, main.getPictureViewModel().getExif());
+        Binding.applyBinding(iptcView, main.getPictureViewModel().getIptc());
+        Binding.applyBinding(photographerView, main.getPictureViewModel().getPhotographer());
     }
 
+    // EVENT FUNCTIONS
+    // the following functions are called by clicking on buttons, images etc.
+
+    // called by clicking on an image in the picture list
+    // gets the index of the image that was clicked
+    // and forwards it to the main view model to update the selected picture
     public void selectImage(MouseEvent mouseEvent) {
         int selectedIndex = pictureListView.getChildren().indexOf(mouseEvent.getTarget());
-        mwvm.selectPicture(selectedIndex);
+        main.selectPicture(selectedIndex);
     }
 
+    // called by: a save changes button
+    // get the response text if the save was successful or not
+    // and displays it in a simple pop up window
     public void saveChanges() {
-        String response = mwvm.updateDatabase();
+        String response = main.updateDatabase();
         PopUpView.display(response);
     }
 
+    // called by: reload pictures button
     public void reloadPictures() {
-        mwvm.loadAllPictures();
+        main.loadAllPictures();
+    }
+
+    // called by: manage photographers button
+    // displays a new window to edit the data of every photographer
+    public void showPhotographerManagerView() {
+        Stage window = new Stage();
+        Parent root = null;
+
+        // don't know it this counts as logic
+        // TODO: maybe needs a refactoring
+        try {
+            root = FXMLLoader.load(getClass().getResource("../fxml/photographerManager.fxml"));
+        } catch (IOException e) {
+            logger.warning("Something went wrong loading the FXML file! Check the path and the syntax.");
+        }
+
+        window.setTitle("Photographer Manager");
+        window.setScene(new Scene(root, 400, 400));
+        window.show();
     }
 }

@@ -1,4 +1,4 @@
-package main.viewmodel;
+package main.viewmodel.subViewModel;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -9,7 +9,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.logging.Logger;
 
-public class PictureViewModel extends ViewModel {
+public class PictureViewModel {
     private EXIFViewModel exif;
     private IPTCViewModel iptc;
     private PhotographerViewModel photographer;
@@ -47,9 +47,10 @@ public class PictureViewModel extends ViewModel {
         // TODO: Photographer doesn't update!
         exif.saveChanges(pictureModel.getExif());
         iptc.saveChanges(pictureModel.getIptc());
-        photographer.saveChanges(pictureModel.getPhotographer());
+        photographer.updateModel();
 
         logger.info("Updated Model " + this.pictureModel);
+        refresh(pictureModel);
 
         return pictureModel;
     }

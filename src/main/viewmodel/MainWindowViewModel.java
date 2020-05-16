@@ -1,6 +1,10 @@
 package main.viewmodel;
 import main.model.PictureModel;
 import main.service.PictureServiceMock;
+import main.viewmodel.subViewModel.PictureListViewModel;
+import main.viewmodel.subViewModel.PictureViewModel;
+import main.viewmodel.subViewModel.SearchViewModel;
+
 import java.util.logging.Logger;
 
 public class MainWindowViewModel {
@@ -11,10 +15,10 @@ public class MainWindowViewModel {
     // Children View Models
     private PictureListViewModel pictureListViewModel = new PictureListViewModel(ps.getAllPictures());
     private SearchViewModel searchViewModel = new SearchViewModel();
-    private PictureViewModel selectedPicture = new PictureViewModel(ps.getPicture(selectedIndex));
+    private PictureViewModel pictureViewModel = new PictureViewModel(ps.getPicture(selectedIndex));
 
     public PictureViewModel getPictureViewModel() {
-        return selectedPicture;
+        return pictureViewModel;
     }
 
     public PictureListViewModel getPictureListViewModel() {
@@ -26,17 +30,15 @@ public class MainWindowViewModel {
     }
 
     public void selectPicture(int selectedIndex) {
-        if (this.selectedIndex != selectedIndex) {
+        if(selectedIndex != -1) {
             this.selectedIndex = selectedIndex;
-            selectedPicture.refresh(ps.getPicture(selectedIndex));
+            pictureViewModel.refresh(ps.getPicture(selectedIndex));
             logger.info("Selected image with index: " + selectedIndex);
-        } else {
-            logger.info("Image " + selectedIndex + " is already selected.");
         }
     }
 
     public String updateDatabase() {
-        PictureModel pic = selectedPicture.getUpdatedModel();
+        PictureModel pic = pictureViewModel.getUpdatedModel();
 
         // TODO: Business Layer validates Data
         /*
@@ -49,6 +51,8 @@ public class MainWindowViewModel {
     }
 
     public void loadAllPictures() {
-        selectPicture(0);
+        pictureViewModel.refresh(ps.getPicture(selectedIndex));
+        pictureListViewModel.refresh(ps.getAllPictures());
+        logger.info("Reloaded all images");
     }
 }

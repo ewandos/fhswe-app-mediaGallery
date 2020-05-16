@@ -62,4 +62,8 @@ public interface IPictureService {
      * @return List of PhotographerModels
      */
     List<PhotographerModel> getAllPhotographers();
+
+    PhotographerModel getPhotographer(int i);
+
+    PhotographerModel updatePhotographer(PhotographerModel photographerModel);
 }

@@ -1,4 +1,4 @@
-package main.viewmodel;
+package main.viewmodel.subViewModel;
 
 import javafx.beans.property.*;
 import main.model.EXIFModel;
