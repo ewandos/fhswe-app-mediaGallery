@@ -1,5 +1,6 @@
 package main.view;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -54,7 +55,7 @@ public class MainWindowView extends AbstractController {
 
         // add an observable list to the hBox, so if the content of the list changes
         // the content in the GUI changes
-        pictureListView.getChildren().addAll(main.getPictureListViewModel().getThumbnails());
+        pictureListView.getChildren().addAll(main.getPictureListViewModel().getThumbs());
 
         // these bindings are NOT done with native javafx functions
         // instead two helper classes main.resources.Binding & main.resources.ReflectionHelper are used
@@ -98,7 +99,7 @@ public class MainWindowView extends AbstractController {
         Stage window = new Stage();
         Parent root = null;
 
-        // don't know it this counts as logic
+        // don't know if this counts as logic
         // TODO: maybe needs a refactoring
         try {
             root = FXMLLoader.load(getClass().getResource("../fxml/photographerManager.fxml"));
@@ -109,5 +110,10 @@ public class MainWindowView extends AbstractController {
         window.setTitle("Photographer Manager");
         window.setScene(new Scene(root, 400, 400));
         window.show();
+    }
+
+
+    public void searchPictures() {
+        main.loadSearchedPictures();
     }
 }

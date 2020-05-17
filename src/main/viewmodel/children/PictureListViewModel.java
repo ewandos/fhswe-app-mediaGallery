@@ -1,17 +1,18 @@
-package main.viewmodel.subViewModel;
+package main.viewmodel.children;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import main.model.PictureModel;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
 public class PictureListViewModel {
 
-    private List<ImageView> thumbnails = new ArrayList<>();
+    private ObservableList<ImageView> thumbs = FXCollections.observableArrayList();
     private final Logger logger = Logger.getLogger("PictureListViewModel");
 
     public PictureListViewModel(List<PictureModel> pictureList) {
@@ -19,7 +20,7 @@ public class PictureListViewModel {
     }
 
     public void refresh(List<PictureModel> pictureList) {
-        thumbnails.clear();
+        thumbs.clear();
         for (PictureModel pic : pictureList) {
             try {
                 String path = "./images/" + pic.getFilename();
@@ -27,14 +28,14 @@ public class PictureListViewModel {
                 ImageView imView = new ImageView(image);
                 imView.setFitHeight(120);
                 imView.setPreserveRatio(true);
-                thumbnails.add(imView);
+                thumbs.add(imView);
             } catch(FileNotFoundException e) {
                 logger.warning("File not found!");
             }
         }
     }
 
-    public List<ImageView> getThumbnails() {
-        return thumbnails;
+    public ObservableList<ImageView> getThumbs() {
+        return thumbs;
     }
 }

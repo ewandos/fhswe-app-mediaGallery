@@ -1,6 +1,5 @@
-package main.viewmodel.subViewModel;
+package main.viewmodel.children;
 
-import javafx.beans.binding.StringBinding;
 import javafx.scene.text.Text;
 import main.model.PhotographerModel;
 

@@ -2,8 +2,8 @@ package main.viewmodel;
 
 import main.model.PhotographerModel;
 import main.service.PictureServiceMock;
-import main.viewmodel.subViewModel.PhotographerListViewModel;
-import main.viewmodel.subViewModel.PhotographerViewModel;
+import main.viewmodel.children.PhotographerListViewModel;
+import main.viewmodel.children.PhotographerViewModel;
 
 public class PhotographerManagerViewModel {
 

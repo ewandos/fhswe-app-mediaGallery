@@ -1,4 +1,4 @@
-package main.viewmodel.subViewModel;
+package main.viewmodel.children;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
@@ -72,7 +72,4 @@ public class PhotographerViewModel {
     public StringProperty notesProperty() {
         return notes;
     }
-
-
-
 }

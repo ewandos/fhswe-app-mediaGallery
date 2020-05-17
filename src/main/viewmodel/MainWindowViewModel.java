@@ -1,10 +1,11 @@
 package main.viewmodel;
 import main.model.PictureModel;
 import main.service.PictureServiceMock;
-import main.viewmodel.subViewModel.PictureListViewModel;
-import main.viewmodel.subViewModel.PictureViewModel;
-import main.viewmodel.subViewModel.SearchViewModel;
+import main.viewmodel.children.PictureListViewModel;
+import main.viewmodel.children.PictureViewModel;
+import main.viewmodel.children.SearchViewModel;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 public class MainWindowViewModel {
@@ -54,5 +55,13 @@ public class MainWindowViewModel {
         pictureViewModel.refresh(ps.getPicture(selectedIndex));
         pictureListViewModel.refresh(ps.getAllPictures());
         logger.info("Reloaded all images");
+    }
+
+    public void loadSearchedPictures() {
+        String searchText = searchViewModel.searchTextProperty().get();
+        List<PictureModel> searchResult = ps.searchPictures(searchText);
+        pictureViewModel.refresh(searchResult.get(0));
+        pictureListViewModel.refresh(searchResult);
+        logger.info("Searched for: " + searchText + "\nFound: " + searchResult);
     }
 }

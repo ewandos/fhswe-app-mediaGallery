@@ -1,4 +1,4 @@
-package main.viewmodel.subViewModel;
+package main.viewmodel.children;
 
 import javafx.beans.property.*;
 import main.model.IPTCModel;

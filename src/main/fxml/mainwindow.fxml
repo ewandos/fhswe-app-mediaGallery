@@ -38,7 +38,7 @@
         <TextField Binding.twoWay="{text=searchText}" prefHeight="27.0" prefWidth="479.0"
                    promptText="Search for keywords or values..." HBox.hgrow="ALWAYS"/>
         <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" text="Find Pictures"
-                HBox.hgrow="ALWAYS"/>
+                HBox.hgrow="ALWAYS" onAction="#searchPictures"/>
     </HBox>
     <SplitPane dividerPositions="0.70" VBox.vgrow="ALWAYS">
         <AnchorPane fx:id="previewImageContainer" minWidth="-Infinity" prefWidth="300.0">
@@ -78,7 +78,7 @@
                         <TextArea Binding.twoWay="{text=description}" wrapText="true"/>
                         <Label text="Rating"/>
                         <Slider Binding.twoWay="{value=rating}" blockIncrement="1.0"
-                                majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0"
+                                majorTickUnit="1.0" max="5.0" minorTickCount="0"
                                 showTickLabels="true" showTickMarks="true" snapToTicks="true"/>
                         <Label text="Tags"/>
                         <TextField Binding.twoWay="{text=tags}"/>
