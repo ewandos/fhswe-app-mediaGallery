@@ -84,7 +84,7 @@ public class MainWindowView extends AbstractController {
     // get the response text if the save was successful or not
     // and displays it in a simple pop up window
     public void saveChanges() {
-        String response = main.updateDatabase();
+        String response = main.updateModels();
         PopUpView.display(response);
     }
 

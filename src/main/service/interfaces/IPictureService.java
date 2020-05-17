@@ -35,6 +35,7 @@ public interface IPictureService {
      */
     List<PictureModel> searchPictures(String keyword);
 
+    PictureModel getPictureOfSearchResult(String keyword, int index);
 
     /**
      * @param filename The Filename of the picture

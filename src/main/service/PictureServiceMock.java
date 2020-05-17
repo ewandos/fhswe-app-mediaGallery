@@ -172,6 +172,12 @@ public class PictureServiceMock implements IPictureService {
     }
 
     @Override
+    public PictureModel getPictureOfSearchResult(String keyword, int index) {
+        List<PictureModel> searchResult = searchPictures(keyword);
+        return searchResult.get(index);
+    }
+
+    @Override
     public PictureModel getPicture(String filename) {
         for (PictureModel pic : pictureShop) {
             if (pic.getFilename().equalsIgnoreCase(filename))
@@ -210,6 +216,7 @@ public class PictureServiceMock implements IPictureService {
     public PhotographerModel updatePhotographer(PhotographerModel photographerModel) {
         return null;
     }
+
 
 
 }

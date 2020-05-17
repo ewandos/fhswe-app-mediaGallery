@@ -1,4 +1,6 @@
 package main.viewmodel;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import main.model.PictureModel;
 import main.service.PictureServiceMock;
 import main.viewmodel.children.PictureListViewModel;
@@ -18,6 +20,12 @@ public class MainWindowViewModel {
     private SearchViewModel searchViewModel = new SearchViewModel();
     private PictureViewModel pictureViewModel = new PictureViewModel(ps.getPicture(selectedIndex));
 
+    private BooleanProperty activeSearch = new SimpleBooleanProperty();
+
+    public MainWindowViewModel() {
+        activeSearch.bind(searchViewModel.activeSearchProperty());
+    }
+
     public PictureViewModel getPictureViewModel() {
         return pictureViewModel;
     }
@@ -32,13 +40,20 @@ public class MainWindowViewModel {
 
     public void selectPicture(int selectedIndex) {
         if(selectedIndex != -1) {
+            if (activeSearch.get()) {
+                String searchText = searchViewModel.searchTextProperty().get();
+                PictureModel pictureModel = ps.getPictureOfSearchResult(searchText, selectedIndex);
+                pictureViewModel.refresh(pictureModel);
+                logger.info("Selected image in search results with index: " + selectedIndex);
+            } else {
+                pictureViewModel.refresh(ps.getPicture(selectedIndex));
+                logger.info("Selected image with index: " + selectedIndex);
+            }
             this.selectedIndex = selectedIndex;
-            pictureViewModel.refresh(ps.getPicture(selectedIndex));
-            logger.info("Selected image with index: " + selectedIndex);
         }
     }
 
-    public String updateDatabase() {
+    public String updateModels() {
         PictureModel pic = pictureViewModel.getUpdatedModel();
 
         // TODO: Business Layer validates Data
@@ -60,8 +75,10 @@ public class MainWindowViewModel {
     public void loadSearchedPictures() {
         String searchText = searchViewModel.searchTextProperty().get();
         List<PictureModel> searchResult = ps.searchPictures(searchText);
+
+        logger.info("Searched for: " + searchText + "\nFound: " + searchResult);
+
         pictureViewModel.refresh(searchResult.get(0));
         pictureListViewModel.refresh(searchResult);
-        logger.info("Searched for: " + searchText + "\nFound: " + searchResult);
     }
 }
