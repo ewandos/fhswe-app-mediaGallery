@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 public class PictureListViewModel {
 
-    private ObservableList<ImageView> thumbs = FXCollections.observableArrayList();
+    private ObservableList<ImageView> thumbnails = FXCollections.observableArrayList();
     private final Logger logger = Logger.getLogger("PictureListViewModel");
 
     public PictureListViewModel(List<PictureModel> pictureList) {
@@ -20,7 +20,7 @@ public class PictureListViewModel {
     }
 
     public void refresh(List<PictureModel> pictureList) {
-        thumbs.clear();
+        thumbnails.clear();
         for (PictureModel pic : pictureList) {
             try {
                 String path = "./images/" + pic.getFilename();
@@ -28,14 +28,14 @@ public class PictureListViewModel {
                 ImageView imView = new ImageView(image);
                 imView.setFitHeight(120);
                 imView.setPreserveRatio(true);
-                thumbs.add(imView);
+                thumbnails.add(imView);
             } catch(FileNotFoundException e) {
                 logger.warning("File not found!");
             }
         }
     }
 
-    public ObservableList<ImageView> getThumbs() {
-        return thumbs;
+    public ObservableList<ImageView> getThumbnails() {
+        return thumbnails;
     }
 }

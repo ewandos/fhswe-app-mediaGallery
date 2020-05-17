@@ -1,10 +1,9 @@
 package main.view;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.image.ImageView;
@@ -34,7 +33,7 @@ public class MainWindowView extends AbstractController {
     public AnchorPane exifView;
     public AnchorPane iptcView;
     public AnchorPane photographerView;
-    public HBox pictureListView;
+    public ListView pictureListView;
     public HBox searchView;
 
     // container that have no corresponding view model
@@ -55,7 +54,7 @@ public class MainWindowView extends AbstractController {
 
         // add an observable list to the hBox, so if the content of the list changes
         // the content in the GUI changes
-        pictureListView.getChildren().addAll(main.getPictureListViewModel().getThumbs());
+        pictureListView.setItems(main.getPictureListViewModel().getThumbnails());
 
         // these bindings are NOT done with native javafx functions
         // instead two helper classes main.resources.Binding & main.resources.ReflectionHelper are used
@@ -75,8 +74,9 @@ public class MainWindowView extends AbstractController {
     // called by clicking on an image in the picture list
     // gets the index of the image that was clicked
     // and forwards it to the main view model to update the selected picture
-    public void selectImage(MouseEvent mouseEvent) {
-        int selectedIndex = pictureListView.getChildren().indexOf(mouseEvent.getTarget());
+    public void selectImage() {
+        ImageView selectedImage = (ImageView) pictureListView.getSelectionModel().getSelectedItem();
+        int selectedIndex = pictureListView.getItems().indexOf(selectedImage);
         main.selectPicture(selectedIndex);
     }
 

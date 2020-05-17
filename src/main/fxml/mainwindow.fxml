@@ -20,6 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import main.resources.Binding?>
 
+<?import javafx.scene.control.ListView?>
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0"
       xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="main.view.MainWindowView">
@@ -117,11 +118,6 @@
             </Tab>
         </TabPane>
     </SplitPane>
-    <ScrollPane fitToWidth="true" hbarPolicy="ALWAYS"  pannable="true" vbarPolicy="NEVER">
-        <AnchorPane>
-            <HBox fx:id="pictureListView" fillHeight="false" spacing="10.0" onMouseClicked="#selectImage">
-
-            </HBox>
-        </AnchorPane>
-    </ScrollPane>
+    <ListView fx:id="pictureListView" onMouseClicked="#selectImage" orientation="HORIZONTAL" prefHeight="180">
+    </ListView>
 </VBox>
