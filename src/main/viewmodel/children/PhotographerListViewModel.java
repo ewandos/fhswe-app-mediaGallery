@@ -1,15 +1,17 @@
 package main.viewmodel.children;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.text.Text;
 import main.model.PhotographerModel;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.logging.Logger;
 
 public class PhotographerListViewModel {
     private final Logger logger = Logger.getLogger("PhotographerListViewModel");
-    private List<Text> photographerDisplayNames = new ArrayList<>();
+    private ObservableList<Text> photographerDisplayNames =  FXCollections.observableArrayList();
 
     public PhotographerListViewModel(List<PhotographerModel> photographerModels) {
         refresh(photographerModels);
@@ -22,7 +24,7 @@ public class PhotographerListViewModel {
         }
     }
 
-    public List<Text> getPhotographerList() {
+    public ObservableList<Text> getPhotographerList() {
         return photographerDisplayNames;
     }
 }

@@ -3,6 +3,7 @@ package main.view;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import main.resources.Binding;
 import main.viewmodel.PhotographerManagerViewModel;
 
@@ -18,13 +19,13 @@ public class PhotographerManagerView extends AbstractController {
     @Override
     public void initialize(URL url, ResourceBundle resources) {
         super.initialize(url, resources);
-        photographerListView.getItems().addAll(photographerManagerViewModel.getPhotographerListViewModel().getPhotographerList());
+        photographerListView.setItems(photographerManagerViewModel.getPhotographerListViewModel().getPhotographerList());
         Binding.applyBinding(photographerView, photographerManagerViewModel.getPhotographerViewModel());
     }
 
-    public void selectPhotographer(MouseEvent mouseEvent) {
-        // TODO: only selects photographer if clicked explicitly on the text
-        int selectedIndex = photographerListView.getItems().indexOf(mouseEvent.getTarget());
+    public void selectPhotographer() {
+        Text selectedName = (Text) photographerListView.getSelectionModel().getSelectedItem();
+        int selectedIndex = photographerListView.getItems().indexOf(selectedName);
         photographerManagerViewModel.selectPhotographer(selectedIndex);
     }
 
