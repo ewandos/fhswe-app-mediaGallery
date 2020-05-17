@@ -17,7 +17,7 @@ public class DBService {
     }
 
     private DBService() {
-        String DB_URL = "jdbc:h2:/Users/philipewert/repository/fhswe-java-app-mediaGallery/database.mv.db";
+        String DB_URL = "jdbc:h2:./database/database.mv.db";
         String USER = "";
         String PASS = "";
 
