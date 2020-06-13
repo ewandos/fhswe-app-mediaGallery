@@ -66,5 +66,5 @@ public interface IPictureService {
 
     PhotographerModel getPhotographer(int i);
 
-    PhotographerModel updatePhotographer(PhotographerModel photographerModel);
+    PhotographerModel updatePhotographer(PhotographerModel photographerModel, int index);
 }

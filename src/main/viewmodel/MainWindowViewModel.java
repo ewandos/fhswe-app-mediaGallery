@@ -2,7 +2,9 @@ package main.viewmodel;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import main.model.PictureModel;
-import main.service.PictureServiceMock;
+import main.service.PictureService;
+import main.service.PictureServiceM;
+import main.service.interfaces.IPictureService;
 import main.viewmodel.children.PictureListViewModel;
 import main.viewmodel.children.PictureViewModel;
 import main.viewmodel.children.SearchViewModel;
@@ -11,7 +13,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 public class MainWindowViewModel {
-    private PictureServiceMock ps = PictureServiceMock.getInstance();
+    private IPictureService ps = PictureServiceM.getInstance();
     private final Logger logger = Logger.getLogger("MainWindowViewModel");
     private int selectedIndex = 0;
 

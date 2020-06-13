@@ -1,10 +1,10 @@
 package main;
 
-import main.service.PictureServiceMock;
+import main.service.PictureServiceM;
 import main.service.interfaces.IPictureService;
 
 public class BusinessLayer {
-    private IPictureService ps = PictureServiceMock.getInstance();
+    private IPictureService ps = PictureServiceM.getInstance();
 
     public BusinessLayer() {
 

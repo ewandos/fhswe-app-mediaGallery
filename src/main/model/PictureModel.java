@@ -19,7 +19,8 @@ public class PictureModel {
     }
 
     public void setPhotographer(PhotographerModel photographer) {
-        this.photographer = photographer;
+        if (photographer != null)
+            this.photographer = photographer;
     }
 
     public IPTCModel getIptc() {
@@ -27,7 +28,8 @@ public class PictureModel {
     }
 
     public void setIptc(IPTCModel iptc) {
-        this.iptc = iptc;
+        if (iptc != null)
+            this.iptc = iptc;
     }
 
     public EXIFModel getExif() {
@@ -35,6 +37,7 @@ public class PictureModel {
     }
 
     public void setExif(EXIFModel exif) {
-        this.exif = exif;
+        if (exif != null)
+            this.exif = exif;
     }
 }

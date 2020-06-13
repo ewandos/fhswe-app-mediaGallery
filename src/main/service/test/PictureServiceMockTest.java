@@ -1,6 +1,6 @@
 package main.service.test;
 import main.model.PictureModel;
-import main.service.PictureServiceMock;
+import main.service.PictureServiceM;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PictureServiceMockTest {
     @Test
     void returns_all_pictures() {
-        PictureServiceMock pservice = PictureServiceMock.getInstance();
+        PictureServiceM pservice = PictureServiceM.getInstance();
         List<PictureModel> pictures = pservice.getAllPictures();
         assertNotNull(pictures);
         assertEquals(5, pictures.size());
@@ -16,7 +16,7 @@ class PictureServiceMockTest {
 
     @Test
     void can_search_by_text_in_filename() {
-        PictureServiceMock pservice = PictureServiceMock.getInstance();
+        PictureServiceM pservice = PictureServiceM.getInstance();
         List<PictureModel> pictures = pservice.searchPictures("katze");
         assertNotNull(pictures);
         assertEquals(1, pictures.size());
@@ -24,7 +24,7 @@ class PictureServiceMockTest {
 
     @Test
     void can_search_by_text_in_filename_not_case_sensitive() {
-        PictureServiceMock pservice = PictureServiceMock.getInstance();
+        PictureServiceM pservice = PictureServiceM.getInstance();
         List<PictureModel> pictures = pservice.searchPictures("kAtZe");
         assertNotNull(pictures);
         assertEquals(1, pictures.size());
@@ -32,7 +32,7 @@ class PictureServiceMockTest {
 
     @Test
     void can_search_by_text_in_filename_pattern_recognition() {
-        PictureServiceMock pservice = PictureServiceMock.getInstance();
+        PictureServiceM pservice = PictureServiceM.getInstance();
         List<PictureModel> pictures = pservice.searchPictures("haus");
         assertNotNull(pictures);
         assertEquals(2, pictures.size());
@@ -40,7 +40,7 @@ class PictureServiceMockTest {
 
     @Test
     void can_get_picture_by_filename() {
-        PictureServiceMock pservice = PictureServiceMock.getInstance();
+        PictureServiceM pservice = PictureServiceM.getInstance();
         String filename = "maus.jpg";
         PictureModel pic = pservice.getPicture(filename);
         assertNotNull(pic);
@@ -49,7 +49,7 @@ class PictureServiceMockTest {
 
     @Test
     void can_get_picture_by_filename_not_cases_sensitive() {
-        PictureServiceMock pservice = PictureServiceMock.getInstance();
+        PictureServiceM pservice = PictureServiceM.getInstance();
         String searchedFilename = "mAuS.jPg";
         String expectedFilename = "maus.jpg";
         PictureModel pic = pservice.getPicture(searchedFilename);
@@ -59,7 +59,7 @@ class PictureServiceMockTest {
 
     @Test
     void can_insert_picture() {
-        PictureServiceMock pservice = PictureServiceMock.getInstance();
+        PictureServiceM pservice = PictureServiceM.getInstance();
         int oldSize = pservice.getPictureCount();
         pservice.addPicture("garten.jpg");
         assertNotEquals(oldSize, pservice.getPictureCount());
@@ -67,7 +67,7 @@ class PictureServiceMockTest {
 
     @Test
     void can_update_picture_iso() {
-        PictureServiceMock pservice = PictureServiceMock.getInstance();
+        PictureServiceM pservice = PictureServiceM.getInstance();
         int newIso = 400;
         int oldIso = -1;
         String filename = "katze.jpg";

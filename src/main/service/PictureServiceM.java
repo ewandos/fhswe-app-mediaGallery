@@ -19,12 +19,12 @@ import java.util.List;
  * In the real DAL the PictureService is responsible for converting ResultSets
  * to Model-Objects and simulating EXIF and IPTC Data for new Picture-Entries
  */
-public class PictureServiceMock implements IPictureService {
+public class PictureServiceM implements IPictureService {
     private List<PictureModel> pictureShop = new ArrayList<>();
     private List<PhotographerModel> photographerShop = new ArrayList<>();
-    private static PictureServiceMock instance = new PictureServiceMock();
+    private static PictureServiceM instance = new PictureServiceM();
 
-    private PictureServiceMock() {
+    private PictureServiceM() {
         // PICTURE 1
         PhotographerModel pg1 = new PhotographerModel();
         pg1.setFirstName("Peter");
@@ -145,7 +145,7 @@ public class PictureServiceMock implements IPictureService {
         pictureShop.add(pi6);
     }
 
-    public static PictureServiceMock getInstance() {
+    public static PictureServiceM getInstance() {
         return instance;
     }
 
@@ -213,7 +213,7 @@ public class PictureServiceMock implements IPictureService {
     }
 
     @Override
-    public PhotographerModel updatePhotographer(PhotographerModel photographerModel) {
+    public PhotographerModel updatePhotographer(PhotographerModel photographerModel, int index) {
         return null;
     }
 

@@ -5,8 +5,6 @@ M
 src/main/model/IPTCModel.java,c/1/c1dc50782b04221b0aa5bcad0abf199d9ec00131
 B
 src/main/Main.java,f/e/fe03b4fd3afe162c6e01309b98a22588e093d274
-9
-	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 S
 #src/main/resources/log4j.properties,7/5/755950bb690295904a49d36e60958901c54013b8
 `
@@ -50,3 +48,15 @@ M
 src/main/fxml/mainwindow.fxml,5/c/5c7e505c7bf730c8a0b3e731723a46aa163a2d37
 f
 6src/main/viewmodel/children/PhotographerViewModel.java,1/3/1316501cd660e08cdd8e44311e8dfd1d18296ec5
+O
+src/main/service/DBService.java,f/a/fa73c752bd82335fb079d5d0937000c1339c1a80
+O
+fhswe-java-app-mediaGallery.iml,f/0/f09fad81e59ffb0fa1fb97665e555e5aba033506
+G
+.idea/libraries/lib.xml,5/6/563a23e064e6fdd2d09bd0c2d99ef456aff71a31
+U
+%src/main/service/PictureServiceM.java,8/2/82013640c28b16994e9bff00635cd0eea3a449a2
+O
+src/main/service/DateUtils.java,7/c/7c29d18d42512c8bebcc265297f60f02a4a871e6
+T
+$src/main/service/PictureService.java,2/5/256680588cc03751d9a23a83263ba3533d821fce
